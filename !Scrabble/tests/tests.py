@@ -5,6 +5,8 @@ from game.scrabble import (
     Tile,
     Player,
     Square,
+    Board,
+    ScrabbleGame,
 )
 
 
@@ -103,6 +105,30 @@ class TestSquare(unittest.TestCase):
             cell.calculate_value(),
             3,
         )
+
+
+class TestBoard(unittest.TestCase):
+    def test_init(self):
+        board = Board()
+        self.assertEqual(
+            len(board.grid),
+            15,
+        )
+        self.assertEqual(
+            len(board.grid[0]),
+            15,
+        )
+
+
+class TestScrabbleGame(unittest.TestCase):
+    def test_init(self):
+        scrabble_game = ScrabbleGame(players_count=3)
+        self.assertIsNotNone(scrabble_game.board)
+        self.assertEqual(
+            len(scrabble_game.players),
+            3,
+        )
+        self.assertIsNotNone(scrabble_game.bag_tiles)
 
 
 if __name__ == '__main__':

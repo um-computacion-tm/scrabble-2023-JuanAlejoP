@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2023-08-28
+
+### Added
+
+- Implement `Board` class in `board` module:
+  -Represent the game board with a grid of squares.
+- Implement `ScrableGame` class in `scrabble`:
+  - Initialize a game instance with a game board, bag of tiles, and players.
+
+### Changed
+
+- Update relevant files to import and use `Board` and `ScrabbleGame` classes
+
 ## [0.4.0] - 2023-08-28
 
 ### Added

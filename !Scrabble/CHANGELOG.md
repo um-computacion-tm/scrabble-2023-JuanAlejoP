@@ -7,11 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2023-08-28
+
+### Added
+
+- Implement `Square` class in `square` module:
+  - Represent individual squares on the game board.
+  - Allow squares to hold a letter tile and calculate its value based on multipliers.
+
+### Changed
+
+- Update relevant files to import and use the `Square` class.
+
 ## [0.3.0] - 2023-08-28
 
 ### Added
 
-- Implement `Player` class in `player`:
+- Implement `Player` class in `player` module:
   - Initialize player with an empty set of tiles.
 
 ### Changed

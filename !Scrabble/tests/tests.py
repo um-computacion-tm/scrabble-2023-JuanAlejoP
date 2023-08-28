@@ -4,6 +4,7 @@ from game.scrabble import (
     BagTiles,
     Tile,
     Player,
+    Square,
 )
 
 
@@ -59,6 +60,48 @@ class TestPlayer(unittest.TestCase):
         self.assertEqual(
             len(player_1.tiles),
             0,
+        )
+
+
+class TestSquare(unittest.TestCase):
+    def test_init(self):
+        square = Square(multiplier=2, multiplier_type='letter')
+        self.assertEqual(
+            square.multiplier,
+            2,
+        )
+        self.assertEqual(
+            square.multiplier_type,
+            'letter',
+        )
+        self.assertIsNone(square.letter)
+        self.assertEqual(
+            square.calculate_value(),
+            0,
+        )
+
+    def test_add_letter(self):
+        cell = Square(multiplier=1, multiplier_type='')
+        letter = Tile(letter='p', value=3)
+        cell.add_letter(letter=letter)
+        self.assertEqual(cell.letter, letter)
+
+    def test_cell_value(self):
+        cell = Square(multiplier=2, multiplier_type='letter')
+        letter = Tile(letter='p', value=3)
+        cell.add_letter(letter=letter)
+        self.assertEqual(
+            cell.calculate_value(),
+            6,
+        )
+
+    def test_cell_multiplier_word(self):
+        cell = Square(multiplier=2, multiplier_type='word')
+        letter = Tile(letter='p', value=3)
+        cell.add_letter(letter=letter)
+        self.assertEqual(
+            cell.calculate_value(),
+            3,
         )
 
 

@@ -7,6 +7,61 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2023-08-28
+
+### Added
+
+- Implement `Board` class in `board` module:
+  -Represent the game board with a grid of squares.
+- Implement `ScrableGame` class in `scrabble`:
+  - Initialize a game instance with a game board, bag of tiles, and players.
+
+### Changed
+
+- Update relevant files to import and use `Board` and `ScrabbleGame` classes
+
+## [0.4.0] - 2023-08-28
+
+### Added
+
+- Implement `Square` class in `square` module:
+  - Represent individual squares on the game board.
+  - Allow squares to hold a letter tile and calculate its value based on multipliers.
+
+### Changed
+
+- Update relevant files to import and use the `Square` class.
+
+## [0.3.0] - 2023-08-28
+
+### Added
+
+- Implement `Player` class in `player` module:
+  - Initialize player with an empty set of tiles.
+
+### Changed
+
+- Update `scrabble` to import `Player` class.
+
+## [0.2.0] - 2023-08-28
+
+### Added
+
+- Expand tile bag in `BagTiles` class:
+  - Add additional tiles for various letters and values.
+  - Include blank tiles as wildcards.
+  
+### Changed
+
+- Move `models` functionality to separate files:
+    - `bag_tiles` to manage tile bag.
+    - `scrabble` to handle main game logic.
+    - `tile` to define the Tile class.
+
+### Removed
+
+- Remove `models` module: Functionality moved to `bag_tiles`, `scrabble`, and `tile`.
+
 ## [0.1.0] - 2023-08-21
 
 ### Added
@@ -15,5 +70,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement `Tile` class to represent individual game tiles with letters and values.
 - Implement `BagTiles` class to manage the bag of tiles for the game.
 - Add methods to `BagTiles` class for taking and putting back tiles.
-- Create `test_models` module to contain unit tests.
-- Add test cases to ensure proper functioning of tile creation, bag initialization, tile taking, and tile putting.

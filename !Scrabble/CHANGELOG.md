@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.0] - YYYY-MM-DD
+
+### Changed
+
+- Move `models` functionality to separate files:
+    - `bag_tiles` to manage tile bag.
+    - `scrabble` to handle main game logic.
+    - `tile` to define the Tile class.
+
+### Added
+
+- Expand tile bag in `BagTiles` class:
+  - Add additional tiles for various letters and values.
+  - Include blank tiles as wildcards.
+
+### Removed
+
+- Remove `models` module: Functionality moved to `bag_tiles`, `scrabble`, and `tile`.
+
 ## [0.1.0] - 2023-08-21
 
 ### Added
@@ -15,5 +34,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Implement `Tile` class to represent individual game tiles with letters and values.
 - Implement `BagTiles` class to manage the bag of tiles for the game.
 - Add methods to `BagTiles` class for taking and putting back tiles.
-- Create `test_models` module to contain unit tests.
-- Add test cases to ensure proper functioning of tile creation, bag initialization, tile taking, and tile putting.

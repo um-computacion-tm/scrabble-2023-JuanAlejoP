@@ -1,9 +1,9 @@
 import unittest
-from game.models import (
+from unittest.mock import patch
+from game.scrabble import (
     BagTiles,
     Tile,
 )
-from unittest.mock import patch
 
 
 class TestTiles(unittest.TestCase):
@@ -19,7 +19,7 @@ class TestBagTiles(unittest.TestCase):
         bag = BagTiles()
         self.assertEqual(
             len(bag.tiles),
-            5,
+            100,
         )
         self.assertEqual(
             patch_shuffle.call_count,
@@ -30,13 +30,12 @@ class TestBagTiles(unittest.TestCase):
             bag.tiles,
         )
 
-
     def test_take(self):
         bag = BagTiles()
         tiles = bag.take(2)
         self.assertEqual(
             len(bag.tiles),
-            3,
+            98,
         )
         self.assertEqual(
             len(tiles),
@@ -45,11 +44,11 @@ class TestBagTiles(unittest.TestCase):
 
     def test_put(self):
         bag = BagTiles()
-        put_tiles = [Tile('Z', 1), Tile('Y', 1)]
-        bag.put(put_tiles)
+        tiles = bag.take(5)
+        bag.put(tiles)
         self.assertEqual(
             len(bag.tiles),
-            7,
+            100,
         )
 
 

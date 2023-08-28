@@ -7,20 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.2.0] - YYYY-MM-DD
-
-### Changed
-
-- Move `models` functionality to separate files:
-    - `bag_tiles` to manage tile bag.
-    - `scrabble` to handle main game logic.
-    - `tile` to define the Tile class.
+## [0.2.0] - 2023-08-28
 
 ### Added
 
 - Expand tile bag in `BagTiles` class:
   - Add additional tiles for various letters and values.
   - Include blank tiles as wildcards.
+  
+### Changed
+
+- Move `models` functionality to separate files:
+    - `bag_tiles` to manage tile bag.
+    - `scrabble` to handle main game logic.
+    - `tile` to define the Tile class.
 
 ### Removed
 

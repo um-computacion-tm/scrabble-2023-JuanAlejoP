@@ -3,6 +3,7 @@ from unittest.mock import patch
 from game.scrabble import (
     BagTiles,
     Tile,
+    Player,
 )
 
 
@@ -49,6 +50,15 @@ class TestBagTiles(unittest.TestCase):
         self.assertEqual(
             len(bag.tiles),
             100,
+        )
+
+
+class TestPlayer(unittest.TestCase):
+    def test_init(self):
+        player_1 = Player()
+        self.assertEqual(
+            len(player_1.tiles),
+            0,
         )
 
 

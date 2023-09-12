@@ -7,6 +7,22 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2023-09-11
+
+### Added
+
+- Implement player turns in `ScrableGame` class:
+  - Add functionality to switch to the next player's turn.
+
+### Changed
+
+- Update `scrabble.py`:
+  - Implement player turn logic for the game.
+  - Ensure players take turns correctly.
+  
+- Update `player.py`:
+  - Adjust the `Player` class to accept the `bag_tiles` parameter in its constructor.
+
 ## [0.5.0] - 2023-08-28
 
 ### Added

@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.9.0] - 2023-09-XX
+
+### Added
+
+- Implement custom exception `Over100TilesException` in `BagTiles` class:
+  - Raise this exception when attempting to put tiles exceeding the limit of 100 tiles in the bag.
+
+- Update `BagTiles` class to handle exceptions related to tile putting.
+
+### Changed
+
+- Modify `BagTiles` class to use proper exception handling when putting tiles.
+
+### Improved
+
+- Improve error handling and user feedback when interacting with the tile bag.
+
 ## [0.8.0] - 2023-09-XX
 
 ### Added

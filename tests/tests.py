@@ -58,7 +58,8 @@ class TestBagTiles(unittest.TestCase):
 
 class TestPlayer(unittest.TestCase):
     def test_init(self):
-        player_1 = Player()
+        bag_tiles = BagTiles()
+        player_1 = Player(bag_tiles)
         self.assertEqual(
             len(player_1.tiles),
             0,
@@ -83,28 +84,63 @@ class TestSquare(unittest.TestCase):
         )
 
     def test_add_letter(self):
-        cell = Square(multiplier=1, multiplier_type='')
+        square = Square(multiplier=1, multiplier_type='')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
-        self.assertEqual(cell.letter, letter)
+        square.add_letter(letter=letter)
+        self.assertEqual(square.letter, letter)
 
     def test_cell_value(self):
-        cell = Square(multiplier=2, multiplier_type='letter')
+        square = Square(multiplier=2, multiplier_type='letter')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
+        square.add_letter(letter=letter)
         self.assertEqual(
-            cell.calculate_value(),
+            square.calculate_value(),
             6,
         )
 
     def test_cell_multiplier_word(self):
-        cell = Square(multiplier=2, multiplier_type='word')
+        square = Square(multiplier=2, multiplier_type='word')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
+        square.add_letter(letter=letter)
         self.assertEqual(
-            cell.calculate_value(),
+            square.calculate_value(),
             3,
         )
+
+
+class TestCalculateWordValue(unittest.TestCase):
+    def test_simple(self):
+        board = Board()
+        word = [
+            Square(letter=Tile("C", 3)),
+            Square(letter=Tile("A", 1)),
+            Square(letter=Tile("S", 1)),
+            Square(letter=Tile("A", 1))
+        ]
+        value = board.calculate_word_value(word)
+        self.assertEqual(value, 6)
+
+    def test_with_letter_multiplier(self):
+        board = Board()
+        word = [
+            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('A', 1)),
+            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='letter'),
+            Square(letter=Tile('A', 1)),
+        ]
+        value = board.calculate_word_value(word)
+        self.assertEqual(value, 7)
+
+    def test_with_word_multiplier(self):
+        board = Board()
+        word = [
+            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('A', 1)),
+            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='word'),
+            Square(letter=Tile('A', 1)),
+        ]
+        value = board.calculate_word_value(word)
+        self.assertEqual(value, 12)
 
 
 class TestBoard(unittest.TestCase):
@@ -119,6 +155,26 @@ class TestBoard(unittest.TestCase):
             15,
         )
 
+    def test_word_inside_board(self):
+        board = Board()
+        word = 'Facultad'
+        location = (5, 4)
+        orientation = 'H'
+
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+
+        assert word_is_valid == True
+
+    def test_word_out_of_board(self):
+        board = Board()
+        word = 'Facultad'
+        location = (14, 4)
+        orientation = 'H'
+
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+
+        assert word_is_valid == False
+
 
 class TestScrabbleGame(unittest.TestCase):
     def test_init(self):
@@ -130,6 +186,22 @@ class TestScrabbleGame(unittest.TestCase):
         )
         self.assertIsNotNone(scrabble_game.bag_tiles)
 
+    def test_next_turn_when_game_is_starting(self):
+        scrabble_game = ScrabbleGame(players_count=3)
+        scrabble_game.next_turn()
+        assert scrabble_game.current_player == scrabble_game.players[0]
+
+    def test_next_turn_when_player_is_not_the_first(self):
+        scrabble_game = ScrabbleGame(players_count=3)
+        scrabble_game.current_player = scrabble_game.players[0]
+        scrabble_game.next_turn()
+        assert scrabble_game.current_player == scrabble_game.players[1]
+
+    def test_next_turn_when_player_is_last(self):
+        scrabble_game = ScrabbleGame(players_count=3)
+        scrabble_game.current_player = scrabble_game.players[2]
+        scrabble_game.next_turn()
+        assert scrabble_game.current_player == scrabble_game.players[0]
 
 if __name__ == '__main__':
     unittest.main()

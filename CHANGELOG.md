@@ -7,6 +7,77 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2023-09-13
+
+### Added
+
+- Add `validate_word_inside_board` method to verify word positioning inside the board.
+
+### Changed
+
+- Move `calculate_word_value` method from `Square` module to `Board` module.
+
+## [0.9.0] - 2023-09-12
+
+### Added
+
+- Implement custom exception `Over100TilesException` in `BagTiles` class:
+  - Raise this exception when attempting to put tiles exceeding the limit of 100 tiles in the bag.
+
+- Update `BagTiles` class to handle exceptions related to tile putting.
+
+### Changed
+
+- Modify `BagTiles` class to use proper exception handling when putting tiles.
+
+### Improved
+
+- Improve error handling and user feedback when interacting with the tile bag.
+
+## [0.8.0] - 2023-09-12
+
+### Added
+
+- Implement custom exception `UndeZeroTilesException` in `BagTiles` class:
+  - Raise this exception when attempting to take tiles from an empty bag.
+
+- Update `BagTiles` class to handle exceptions related to tile taking.
+
+### Changed
+
+- Modify `BagTiles` class to use proper exception handling when taking tiles.
+
+### Improved
+
+- Improve error handling and user feedback when interacting with the tile bag.
+
+## [0.7.0] - 2023-09-12
+
+### Added
+
+- Add `calculate_word_value` method to calculate the value of a word formed by multiple squares.
+- Improve attributes for better square management.
+
+### Changed
+
+- Update attribute handling in the Square class for better integration with the game logic.
+
+## [0.6.0] - 2023-09-11
+
+### Added
+
+- Implement player turns in `ScrableGame` class:
+  - Add functionality to switch to the next player's turn.
+
+### Changed
+
+- Update `scrabble.py`:
+  - Implement player turn logic for the game.
+  - Ensure players take turns correctly.
+  
+- Update `player.py`:
+  - Adjust the `Player` class to accept the `bag_tiles` parameter in its constructor.
+
 ## [0.5.0] - 2023-08-28
 
 ### Added

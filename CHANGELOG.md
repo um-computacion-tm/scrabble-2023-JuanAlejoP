@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2023-09-12
+
+### Added
+
+- Add calculate_word_value method to calculate the value of a word formed by multiple squares.
+- Improve attributes for better square management.
+
+### Changed
+
+- Update attribute handling in the Square class for better integration with the game logic.
+
 ## [0.6.0] - 2023-09-11
 
 ### Added

@@ -84,28 +84,63 @@ class TestSquare(unittest.TestCase):
         )
 
     def test_add_letter(self):
-        cell = Square(multiplier=1, multiplier_type='')
+        square = Square(multiplier=1, multiplier_type='')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
-        self.assertEqual(cell.letter, letter)
+        square.add_letter(letter=letter)
+        self.assertEqual(square.letter, letter)
 
     def test_cell_value(self):
-        cell = Square(multiplier=2, multiplier_type='letter')
+        square = Square(multiplier=2, multiplier_type='letter')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
+        square.add_letter(letter=letter)
         self.assertEqual(
-            cell.calculate_value(),
+            square.calculate_value(),
             6,
         )
 
     def test_cell_multiplier_word(self):
-        cell = Square(multiplier=2, multiplier_type='word')
+        square = Square(multiplier=2, multiplier_type='word')
         letter = Tile(letter='p', value=3)
-        cell.add_letter(letter=letter)
+        square.add_letter(letter=letter)
         self.assertEqual(
-            cell.calculate_value(),
+            square.calculate_value(),
             3,
         )
+
+
+class TestCalculateWordValue(unittest.TestCase):
+    def test_simple(self):
+        square= Square()
+        word = [
+            Square(letter=Tile("C", 3)),
+            Square(letter=Tile("A", 1)),
+            Square(letter=Tile("S", 1)),
+            Square(letter=Tile("A", 1))
+        ]
+        value = square.calculate_word_value(squares=word)
+        self.assertEqual(value, 6)
+
+    def test_with_letter_multiplier(self):
+        square = Square()
+        word = [
+            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('A', 1)),
+            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='letter'),
+            Square(letter=Tile('A', 1)),
+        ]
+        value = square.calculate_word_value(word)
+        self.assertEqual(value, 7)
+
+    def test_with_word_multiplier(self):
+        square=Square()
+        word = [
+            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('A', 1)),
+            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='word'),
+            Square(letter=Tile('A', 1)),
+        ]
+        value = square.calculate_word_value(word)
+        self.assertEqual(value, 12)
 
 
 class TestBoard(unittest.TestCase):

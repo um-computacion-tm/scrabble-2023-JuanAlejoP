@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2023-09-XX
+
+### Added
+
+- Implement custom exception `UndeZeroTilesException` in `BagTiles` class:
+  - Raise this exception when attempting to take tiles from an empty bag.
+
+- Update `BagTiles` class to handle exceptions related to tile taking.
+
+### Changed
+
+- Modify `BagTiles` class to use proper exception handling when taking tiles.
+
+### Improved
+
+- Improve error handling and user feedback when interacting with the tile bag.
+
 ## [0.7.0] - 2023-09-12
 
 ### Added

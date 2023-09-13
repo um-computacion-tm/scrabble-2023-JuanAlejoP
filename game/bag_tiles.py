@@ -2,6 +2,10 @@ import random
 from game.tile import Tile
 
 
+class UndeZeroTilesException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class BagTiles:
     def __init__(self):
         self.tiles = [
@@ -111,6 +115,8 @@ class BagTiles:
     def take(self, count):
         tiles = []
         for _ in range(count):
+            if not self.tiles:
+                raise UndeZeroTilesException('La bolsa de fichas no puede tener menos de cero fichas.')
             tiles.append(self.tiles.pop())
         return tiles
 

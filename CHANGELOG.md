@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.10.0] - 2023-09-13
+
+### Added
+
+- Add `validate_word_inside_board` method to verify word positioning inside the board.
+
+### Changed
+
+- Move `calculate_word_value` method from `Square` module to `Board` module.
+
 ## [0.9.0] - 2023-09-12
 
 ### Added
@@ -45,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Add calculate_word_value method to calculate the value of a word formed by multiple squares.
+- Add `calculate_word_value` method to calculate the value of a word formed by multiple squares.
 - Improve attributes for better square management.
 
 ### Changed

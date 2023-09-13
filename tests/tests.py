@@ -110,36 +110,36 @@ class TestSquare(unittest.TestCase):
 
 class TestCalculateWordValue(unittest.TestCase):
     def test_simple(self):
-        square= Square()
+        board = Board()
         word = [
             Square(letter=Tile("C", 3)),
             Square(letter=Tile("A", 1)),
             Square(letter=Tile("S", 1)),
             Square(letter=Tile("A", 1))
         ]
-        value = square.calculate_word_value(squares=word)
+        value = board.calculate_word_value(word)
         self.assertEqual(value, 6)
 
     def test_with_letter_multiplier(self):
-        square = Square()
+        board = Board()
         word = [
             Square(letter=Tile('C', 3)),
             Square(letter=Tile('A', 1)),
             Square(letter=Tile('S', 1), multiplier=2, multiplier_type='letter'),
             Square(letter=Tile('A', 1)),
         ]
-        value = square.calculate_word_value(word)
+        value = board.calculate_word_value(word)
         self.assertEqual(value, 7)
 
     def test_with_word_multiplier(self):
-        square=Square()
+        board = Board()
         word = [
             Square(letter=Tile('C', 3)),
             Square(letter=Tile('A', 1)),
             Square(letter=Tile('S', 1), multiplier=2, multiplier_type='word'),
             Square(letter=Tile('A', 1)),
         ]
-        value = square.calculate_word_value(word)
+        value = board.calculate_word_value(word)
         self.assertEqual(value, 12)
 
 
@@ -154,6 +154,26 @@ class TestBoard(unittest.TestCase):
             len(board.grid[0]),
             15,
         )
+
+    def test_word_inside_board(self):
+        board = Board()
+        word = 'Facultad'
+        location = (5, 4)
+        orientation = 'H'
+
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+
+        assert word_is_valid == True
+
+    def test_word_out_of_board(self):
+        board = Board()
+        word = 'Facultad'
+        location = (14, 4)
+        orientation = 'H'
+
+        word_is_valid = board.validate_word_inside_board(word, location, orientation)
+
+        assert word_is_valid == False
 
 
 class TestScrabbleGame(unittest.TestCase):

@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.9.0] - 2023-09-XX
+## [0.9.0] - 2023-09-12
 
 ### Added
 
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Improve error handling and user feedback when interacting with the tile bag.
 
-## [0.8.0] - 2023-09-XX
+## [0.8.0] - 2023-09-12
 
 ### Added
 

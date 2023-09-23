@@ -17,21 +17,6 @@ class Board:
             value = value * multiplier_word
         return value
 
-    # def calculate_word_value(self, squares):
-    #     word_value = 0
-    #     word_multiplier = 1
-    #     squares_used = []
-
-    #     for square in squares:
-    #         if square not in squares_used:
-    #             square_value = square.calculate_value()
-    #             if square.multiplier_type == 'word' and square.active:
-    #                 word_multiplier *= square.multiplier
-    #             word_value += square_value
-    #             squares_used.append(square)
-
-    #     return word_value * word_multiplier
-
     def validate_word_inside_board(self, word, location, orientation):
         position_x = location[0]
         position_y = location[1]

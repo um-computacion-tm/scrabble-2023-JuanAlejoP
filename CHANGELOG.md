@@ -7,6 +7,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.11.0] - 2023-09-22
+
+### Added
+
+- Implement the `main.py` module for player interaction:
+  - The game now starts with a welcome message.
+  - Players are prompted to enter the number of players with input validation.
+  - The game starts with the correct number of players.
+  - The current player's turn is displayed.
+  - Players can input a word, X and Y coordinates, and orientation.
+  - Word input is validated in the game.
+
 ## [0.10.0] - 2023-09-13
 
 ### Added

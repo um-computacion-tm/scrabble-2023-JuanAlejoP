@@ -7,6 +7,8 @@ from game.scrabble import (
     Square,
     Board,
     ScrabbleGame,
+    Over100TilesException,
+    UnderZeroTilesException,
 )
 
 
@@ -55,6 +57,16 @@ class TestBagTiles(unittest.TestCase):
             100,
         )
 
+    def test_under_zero_tiles_exception(self):
+        bag = BagTiles()
+        with self.assertRaises(UnderZeroTilesException):
+            bag.take(101)
+
+    def test_over_100_tiles_exception(self):
+        bag = BagTiles()
+        tiles_to_put = [1] * 101
+        with self.assertRaises(Over100TilesException):
+            bag.put(tiles_to_put)
 
 class TestPlayer(unittest.TestCase):
     def test_init(self):

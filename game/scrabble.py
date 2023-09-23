@@ -3,6 +3,7 @@ from game.bag_tiles import BagTiles
 from game.player import Player
 from game.square import Square
 from game.board import Board
+from game.bag_tiles import Over100TilesException, UnderZeroTilesException
 
 class ScrabbleGame:
     def __init__(self, players_count: int):

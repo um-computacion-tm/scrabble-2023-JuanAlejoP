@@ -4,70 +4,65 @@ from game.scrabble import Board, Square, Tile
 
 class TestCalculateWordValue(unittest.TestCase):
     def test_simple(self):
-        board = Board()
+        square = Square()
+         
         word = [
-            Square(letter=Tile("C", 3)),
+            Square(letter=Tile("C", 1)),
             Square(letter=Tile("A", 1)),
-            Square(letter=Tile("S", 1)),
+            Square(letter=Tile("S", 2)),
             Square(letter=Tile("A", 1))
         ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value, 6)
+        value = square.calculate_word_value(cells=word)
+        self.assertEqual(value, 5)
 
     def test_with_letter_multiplier(self):
-        board = Board()
+        square = Square()
         word = [
-            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('C', 1)),
             Square(letter=Tile('A', 1)),
-            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='letter'),
+            Square(letter=Tile('S', 2), multiplier=2, multiplier_type='letter'),
             Square(letter=Tile('A', 1)),
         ]
-        value = board.calculate_word_value(word)
+        value = square.calculate_word_value(word)
         self.assertEqual(value, 7)
 
     def test_with_word_multiplier(self):
-        board = Board()
+        square = Square()
         word = [
-            Square(letter=Tile('C', 3)),
+            Square(letter=Tile('C', 1)),
             Square(letter=Tile('A', 1)),
-            Square(letter=Tile('S', 1), multiplier=2, multiplier_type='word'),
+            Square(letter=Tile('S', 2), multiplier=2, multiplier_type='word'),
             Square(letter=Tile('A', 1)),
         ]
-        value = board.calculate_word_value(word)
-        self.assertEqual(value, 12)
-
-    def test_with_letter_word_multiplier(self):
+        value = square.calculate_word_value(word)
+        self.assertEqual(value, 10)
+    
+    def test_with_both_multiplier(self):
+        square = Square()
         word = [
-            Square(
-                multiplier=3,
-                multiplier_type='letter',
-                letter=Tile('C', 3)
-            ),
-            Square(letter=Tile('A', 1)),
-            Square(
-                letter=Tile('S', 1),
-                multiplier=2,
-                multiplier_type='word',
-            ),
-            Square(letter=Tile('A', 1)),
+            Square(letter = Tile("C", 3), multiplier=2, multiplier_type='word'),
+            Square(letter = Tile("A", 1), multiplier=3, multiplier_type='letter'),
+            Square(letter = Tile("S", 1), multiplier=1, multiplier_type=''),
+            Square(letter = Tile("A", 1), multiplier=1, multiplier_type='')
         ]
-        value = Board.calculate_word_value(word)
-        self.assertEqual(value, 24)
+        value = square.calculate_word_value(cells=word)
+        self.assertEqual(
+            value, 16
+        )
 
-    # def test_with_letter_word_multiplier_no_active(self):
-    #     word = [
-    #         Square(
-    #             multiplier=3,
-    #             multiplier_type='letter',
-    #             letter=Tile('C', 3)
-    #         ),
-    #         Square(letter=Tile('A', 1)),
-    #         Square(
-    #             letter=Tile('S', 1),
-    #             multiplier=2,
-    #             multiplier_type='word',
-    #         ),
-    #         Square(letter=Tile('A', 1)),
-    #     ]
-    #     value = Board.calculate_word_value(word)
-    #     self.assertEqual(value, 12)
+    def test_with_both_multiplier_cell_not_active(self):
+        square = Square()
+        word = [
+            Square(letter = Tile("C", 3), multiplier=2, multiplier_type='word', active=False),
+            Square(letter = Tile("A", 1), multiplier=3, multiplier_type='letter', active=False),
+            Square(letter = Tile("S", 1), multiplier=1, multiplier_type='', active=False),
+            Square(letter = Tile("A", 1), multiplier=1, multiplier_type='', active=False)
+        ]
+        value = square.calculate_word_value(cells=word)
+        self.assertEqual(
+            value, 6
+        )
+
+
+if __name__ == '__main__':
+     unittest.main()

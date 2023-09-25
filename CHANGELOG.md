@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.13.0] - 2023-09-24
+
+### Added
+
+- Implemented the `validate_word` method in the `ScrabbleGame` class:
+  - This method checks if the player has the required letters to form the word and raises a ValueError if not.
+  - It also validates if the word can fit on the game board and raises a ValueError if not.
+  - The method returns `True` if the word is valid and `False` otherwise.
+
+### Changed
+
+- Made minor internal adjustments to support the new `validate_word` method.
+
 ## [0.12.0] - 2023-09-23
 
 ### Added

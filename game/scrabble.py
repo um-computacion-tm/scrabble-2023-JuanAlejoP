@@ -25,11 +25,20 @@ class ScrabbleGame:
             self.current_player = self.players[index]
 
     def validate_word(self, word, location, orientation):
-        '''
-        1- Validar que usuario tiene esas letras
-        2- Validar que la palabra entra en el tablero
-        '''
-        self.board.validate_word_inside_board(word, location, orientation)
+        try:
+            player_tiles = self.current_player.get_tiles()
+            for letter in word:
+                if letter not in player_tiles:
+                    raise ValueError('El jugador no tiene las letras necesarias para formar la palabra.')
+        except ValueError as e:
+            print(e)
+            return False
+        try:
+            self.board.validate_word_inside_board(word, location, orientation)
+        except ValueError as e:
+            print(e)
+            return False
+        return True
 
     def get_words():
         '''

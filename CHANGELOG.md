@@ -7,11 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.14.0] - 2023-09-25
+
+### Added
+
+- Implement the `get_words` method in the `ScrabbleGame` class:
+  - This method generates possible words based on the input word, location, and orientation.
+  - It checks each possible word for validity on the game board.
+  - The player is prompted to confirm if each valid word is a real word.
+  - Real words are collected and returned as a list.
+
+### Changed
+
+- Made minor internal adjustments to support the new `get_words` method.
+
 ## [0.13.0] - 2023-09-24
 
 ### Added
 
-- Implemented the `validate_word` method in the `ScrabbleGame` class:
+- Implement the `validate_word` method in the `ScrabbleGame` class:
   - This method checks if the player has the required letters to form the word and raises a ValueError if not.
   - It also validates if the word can fit on the game board and raises a ValueError if not.
   - The method returns `True` if the word is valid and `False` otherwise.
@@ -24,11 +38,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added the `validate_word` method to the `ScrabbleGame` class:
+- Add the `validate_word` method to the `ScrabbleGame` class:
   - This method validates that the player has the required letters to form the word.
   - It also checks if the word can fit on the game board.
 
-- Added placeholder methods for `get_words` and `put_words` for future functionality development.
+- Add placeholder methods for `get_words` and `put_words` for future functionality development.
 
 ### Changed
 

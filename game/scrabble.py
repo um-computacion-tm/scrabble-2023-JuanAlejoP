@@ -40,11 +40,21 @@ class ScrabbleGame:
             return False
         return True
 
-    def get_words():
-        '''
-        Obtener las posibles palabras que se pueden formar, dada una palabra, ubicacion y orientacion 
-        Preguntar al usuario, por cada una de esas palabras, las que considera reales
-        '''
+    def get_words(self, word, location, orientation):
+        possible_words = self.generate_possible_words(word)
+
+        valid_words = []
+        for possible_word in possible_words:
+            if self.board.is_word_valid(possible_word, location, orientation):
+                valid_words.append(possible_word)
+
+        real_words = []
+        for valid_word in valid_words:
+            user_response = input(f"¿Es '{valid_word}' una palabra real? (Sí/No): ").strip().lower()
+            if user_response == 'si':
+                real_words.append(valid_word)
+
+        return real_words
 
     def put_words():
         '''

@@ -5,7 +5,7 @@ from game.scrabble import BagTiles, Over100TilesException, UnderZeroTilesExcepti
 
 class TestBagTiles(unittest.TestCase):
     @patch('random.shuffle')
-    def test_bag_tiles(self, patch_shuffle):
+    def test_bag_tiles_init(self, patch_shuffle):
         bag = BagTiles()
         self.assertEqual(
             len(bag.tiles),
@@ -48,9 +48,9 @@ class TestBagTiles(unittest.TestCase):
 
     def test_over_100_tiles_exception(self):
         bag = BagTiles()
-        tiles_to_put = [1] * 101
+        tiles = [1] * 101
         with self.assertRaises(Over100TilesException):
-            bag.put(tiles_to_put)
+            bag.put(tiles)
 
 
 if __name__ == '__main__':

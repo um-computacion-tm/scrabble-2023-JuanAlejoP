@@ -10,8 +10,7 @@ def main():
                 raise ValueError
             break
         except ValueError:
-            print('Valor invalido')
-            
+            print('Valor inválido')
     scrabble_game = ScrabbleGame(players_count=players_count)
     print('Cantidad de jugadores: ',len(scrabble_game.players))
     scrabble_game.next_turn()

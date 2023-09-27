@@ -5,6 +5,7 @@ from game.square import Square
 from game.board import Board
 from game.bag_tiles import Over100TilesException, UnderZeroTilesException
 
+
 class ScrabbleGame:
     def __init__(self, players_count: int):
         self.board = Board()
@@ -12,7 +13,6 @@ class ScrabbleGame:
         self.players:list[Player] = []
         for index in range(players_count):
             self.players.append(Player(id=index, bag_tiles=self.bag_tiles))
-
         self.current_player = None
 
     def next_turn(self):
@@ -25,6 +25,11 @@ class ScrabbleGame:
             self.current_player = self.players[index]
 
     def validate_word(self, word, location, orientation):
+        # '''
+        # 1- Validar que usuario tiene esas letras
+        # 2- Validar que la palabra entra en el tablero
+        # '''
+        # self.board.validate_word_inside_board(word, location, orientation)
         try:
             player_tiles = self.current_player.get_tiles()
             for letter in word:
@@ -41,22 +46,26 @@ class ScrabbleGame:
         return True
 
     def get_words(self, word, location, orientation):
+        # '''
+        # Obtener las posibles palabras que se pueden formar, dada una palabra, ubicacion y orientacion 
+        # Preguntar al usuario, por cada una de esas palabras, las que considera reales
+        # '''
         possible_words = self.generate_possible_words(word)
-
         valid_words = []
         for possible_word in possible_words:
             if self.board.is_word_valid(possible_word, location, orientation):
                 valid_words.append(possible_word)
-
         real_words = []
         for valid_word in valid_words:
             user_response = input(f"¿Es '{valid_word}' una palabra real? (Sí/No): ").strip().lower()
             if user_response == 'si':
                 real_words.append(valid_word)
-
         return real_words
 
     def put_words(self):
+        # '''
+        # Modifica el estado del tablero con las palabras consideradas como correctas
+        # '''
         words_to_put = self.get_words()
         for word, location, orientation in words_to_put:
             if not self.board.is_word_valid(word, location, orientation):

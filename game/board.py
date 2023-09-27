@@ -3,7 +3,7 @@ from game.square import Square
 
 class Board:
     def __init__(self):
-        self.grid = [[Square(1, '', '') for _ in range(15)] for _ in range(15)]
+        self.grid = [[Square(1, "", "") for _ in range(15)] for _ in range(15)]
 
     @staticmethod
     def calculate_word_value(word: list[Square]) -> int:
@@ -11,7 +11,7 @@ class Board:
         multiplier_word = None
         for square in word:
             value = value + square.calculate_value()
-            if square.multiplier_type == 'word' and square.active:
+            if square.multiplier_type == "word" and square.active:
                 multiplier_word = square.multiplier
         if multiplier_word:
             value = value * multiplier_word
@@ -21,7 +21,7 @@ class Board:
         position_x = location[0]
         position_y = location[1]
         len_word = len(word)
-        if orientation == 'H':
+        if orientation == "H":
             if position_x + len_word > 15:
                 return False
             else:

@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.16.0] - 2023-09-27
+
+### Added
+
+- Implement the `has_letters` method in the `Player` class:
+  - This method checks if the player has a specific set of letters.
+  - It counts the occurrence of each letter in the player's tiles.
+  - It then checks if the player has the required letters by comparing with the input set.
+  - Returns `True` if the player has the letters, otherwise `False`.
+
+### Changed
+
+- Made minor internal adjustments to support the new `has_letters` method.
+
 ## [0.15.0] - 2023-09-26
 
 ### Added

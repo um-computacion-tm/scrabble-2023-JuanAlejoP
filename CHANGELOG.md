@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.15.0] - 2023-09-26
+
+### Added
+
+- Implement the `put_words` method in the `ScrabbleGame` class:
+  - This method retrieves a list of words to be placed on the game board using the `get_words` method.
+  - It iterates through the list of words and their respective locations and orientations.
+  - For each word, it checks if it's valid on the game board, and if not, it provides a message.
+  - Valid words are placed on the game board using the `place_word` method.
+
+### Changed
+
+- Made minor internal adjustments to support the new `put_words` method.
+
 ## [0.14.0] - 2023-09-25
 
 ### Added

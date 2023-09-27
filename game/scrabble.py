@@ -56,7 +56,10 @@ class ScrabbleGame:
 
         return real_words
 
-    def put_words():
-        '''
-        Modifica el estado del tablero con las palabras consideradas como correctas
-        '''
+    def put_words(self):
+        words_to_put = self.get_words()
+        for word, location, orientation in words_to_put:
+            if not self.board.is_word_valid(word, location, orientation):
+                print(f"La palabra '{word}' no es válida en la ubicación especificada.")
+                continue
+            self.board.place_word(word, location, orientation)

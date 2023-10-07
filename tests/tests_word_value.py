@@ -10,7 +10,7 @@ class TestCalculateWordValue(unittest.TestCase):
             Square(letter=Tile('S', 2)),
             Square(letter=Tile('A', 1)),
         ]
-        value = calculate_word_value(word)
+        value = Board.calculate_word_value(word)
         self.assertEqual(value, 5)
 
     def test_with_letter_multiplier(self):
@@ -24,7 +24,7 @@ class TestCalculateWordValue(unittest.TestCase):
             ),
             Square(letter=Tile('A', 1)),
         ]
-        value = calculate_word_value(word)
+        value = Board.calculate_word_value(word)
         self.assertEqual(value, 7)
 
     def test_with_word_multiplier(self):
@@ -38,7 +38,7 @@ class TestCalculateWordValue(unittest.TestCase):
             ),
             Square(letter=Tile('A', 1)),
         ]
-        value = calculate_word_value(word)
+        value = Board.calculate_word_value(word)
         self.assertEqual(value, 10)
 
     def test_with_letter_word_multiplier(self):
@@ -56,7 +56,7 @@ class TestCalculateWordValue(unittest.TestCase):
             ),
             Square(letter=Tile('A', 1)),
         ]
-        value = calculate_word_value(word)
+        value = Board.calculate_word_value(word)
         self.assertEqual(value, 14)
 
     def test_with_letter_word_multiplier_no_active(self):
@@ -64,17 +64,19 @@ class TestCalculateWordValue(unittest.TestCase):
             Square(
                 multiplier=3,
                 multiplier_type='letter',
-                letter=Tile('C', 1)
+                letter=Tile('C', 1),
+                active=False
             ),
             Square(letter=Tile('A', 1)),
             Square(
                 letter=Tile('S', 2),
                 multiplier=2,
                 multiplier_type='word',
+                active=False
             ),
             Square(letter=Tile('A', 1)),
         ]
-        value = calculate_word_value(word)
+        value = Board.calculate_word_value(word)
         self.assertEqual(value, 5)
 
 

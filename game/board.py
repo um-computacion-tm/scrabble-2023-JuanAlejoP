@@ -17,6 +17,13 @@ class Board:
             value = value * multiplier_word
         return value
 
+    def validate_word_place_board(self, word, location, orientation):
+        #REVISAR
+        if not self.validate_word_inside_board(word, location, orientation):
+            return False
+
+        return True
+
     def validate_word_inside_board(self, word, location, orientation):
         position_x = location[0]
         position_y = location[1]
@@ -28,3 +35,7 @@ class Board:
                 return True
         else:
             pass
+
+    def is_empty(self):
+        pass
+    #HACER

@@ -24,10 +24,13 @@ class ScrabbleGame:
             index = self.players.index(self.current_player) + 1
             self.current_player = self.players[index]
 
+#ARREGLAR
     def validate_word(self, word, location, orientation):
         # '''
         # 1- Validar que usuario tiene esas letras
         # 2- Validar que la palabra entra en el tablero
+            # esta unida a otra palabra
+            # es inicial y pasa por el inicio
         # '''
         # self.board.validate_word_inside_board(word, location, orientation)
         try:
@@ -72,3 +75,4 @@ class ScrabbleGame:
                 print(f"La palabra '{word}' no es válida en la ubicación especificada.")
                 continue
             self.board.place_word(word, location, orientation)
+#ARREGLAR

@@ -1,8 +1,16 @@
-class Player:
-    def __init__(self, bag_tiles):
-        self.tiles = []
-        self.bag_tiles = bag_tiles
+from game.bag_tiles import BagTiles
 
+
+class Player:
+    def __init__(self, bag_tiles, id):
+        self.tiles = bag_tiles.take(7)
+        self.bag_tiles = bag_tiles
+        self.id = id
+
+    def fill(self):
+        self.tiles += self.bag_tiles.take(7 - len(self.tiles))
+
+#ARREGLAR
     def has_letters(self, letters_to_check):
         player_letters = {}
         for tile in self.tiles:

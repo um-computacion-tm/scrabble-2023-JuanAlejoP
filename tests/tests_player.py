@@ -3,10 +3,11 @@ from game.scrabble import BagTiles, Player, Tile
 
 class TestPlayer(unittest.TestCase):
     def test_init(self):
-        player = Player()
+        bag_tile = BagTiles()
+        player = Player(bag_tile, id)
         self.assertEqual(
             len(player.tiles),
-            0,
+            7,
         )
 
     def test_validate_user_has_letters(self):

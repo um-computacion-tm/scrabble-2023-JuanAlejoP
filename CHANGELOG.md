@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.17.0] - 2023-10-06
+
+### Added
+
+#### Player Class:
+
+- Add the `fill` method to the `Player` class:
+  - This method fills the player's tiles up to 7 if they have fewer than 7 tiles in their rack.
+
+#### Board Class:
+
+- Add the `validate_word_place_board` method to the `Board` class:
+  - This method combines the existing `validate_word_inside_board` method with additional checks for word placement on the board.
+  - Returns `True` if the word can be placed on the board, otherwise `False`.
+
+- Add the `is_empty` method's placeholder to the `Board` class:
+  - This method should check if the game board is empty (has no tiles placed on it).
+
+### Changed
+
+- Make minor internal adjustments to support the new methods in both the `Player` and `Board` classes.
+
 ## [0.16.0] - 2023-09-27
 
 ### Added

@@ -15,6 +15,13 @@ class ScrabbleGame:
             self.players.append(Player(id=index, bag_tiles=self.bag_tiles))
         self.current_player = None
 
+    def play(self, word, location, orientation):
+        self.validate_word(word, location, orientation)
+        words = self.board.put_words(word, location, orientation)
+        total = calculate_word_value(words)
+        self.players[self.current_player].score += total
+        self.next_turn()
+
     def next_turn(self):
         if self.current_player is None:
             self.current_player = self.players[0]

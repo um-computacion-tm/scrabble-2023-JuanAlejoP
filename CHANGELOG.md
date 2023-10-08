@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.19.0] - 2023-09-14
+
+### Added
+
+#### ScrabbleGame Class:
+
+- Add the `play` method to the `ScrabbleGame` class:
+  - This method coordinates the player's move, validating the word, placing it on the board, calculating the word's value, updating the player's score, and advancing the turn.
+  - The `validate_word` method is called to ensure the word is valid before proceeding.
+
+### Changed
+
+- Made minor internal adjustments to support the new `play` method.
+
 ## [0.18.0] - 2023-09-14
 
 ### Added

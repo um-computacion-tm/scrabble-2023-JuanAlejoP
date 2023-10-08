@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.18.0] - 2023-09-14
+
+### Added
+
+#### Board Class:
+
+- Add the `is_empty` method to the `Board` class:
+  - This method checks if the game board is empty by inspecting each square on the board.
+  - Returns `True` if the board is empty, otherwise `False`.
+
+### Changed
+
+- Made minor internal adjustments to support the new `is_empty` method.
+
 ## [0.17.0] - 2023-10-06
 
 ### Added

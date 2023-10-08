@@ -37,5 +37,8 @@ class Board:
             pass
 
     def is_empty(self):
-        pass
-    #HACER
+            for row in self.grid:
+                for square in row:
+                    if square.letter:
+                        return False
+            return True

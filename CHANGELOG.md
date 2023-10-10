@@ -7,7 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.19.0] - 2023-09-14
+## [0.20.0] - 2023-10-09
+
+### Added
+
+#### Main Module:
+
+- Add the `get_player_count` function to the main module:
+  - This function prompts the user to enter the number of players (1-3) with input validation.
+  - It ensures that a valid player count is entered and returns it.
+
+### Changed
+
+- Made minor internal adjustments to the main module to support the `get_player_count` function.
+
+## [0.19.0] - 2023-10-08
 
 ### Added
 
@@ -21,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Made minor internal adjustments to support the new `play` method.
 
-## [0.18.0] - 2023-09-14
+## [0.18.0] - 2023-10-07
 
 ### Added
 

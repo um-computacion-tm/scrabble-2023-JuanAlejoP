@@ -17,6 +17,13 @@ class Board:
             value = value * multiplier_word
         return value
 
+    def dict_validate_word(word):
+            # Implementa la lógica para validar si una palabra existe en el diccionario
+            # Por ejemplo, puedes usar una lista de palabras válidas o conectarte a un servicio de verificación de palabras.
+            # Devuelve True si la palabra es válida y False si no lo es.
+            valid_words = ["word1", "word2", "word3"]  # Ejemplo de lista de palabras válidas
+            return word in valid_words
+
     def validate_word_place_board(self, word, location, orientation):
         #REVISAR
         if not self.validate_word_inside_board(word, location, orientation):

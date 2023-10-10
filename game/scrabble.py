@@ -6,6 +6,18 @@ from game.board import Board
 from game.bag_tiles import Over100TilesException, UnderZeroTilesException
 
 
+class InvalidWordException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class InvalidPlaceWordException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
+class InvalidWordPlacementException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class ScrabbleGame:
     def __init__(self, players_count: int):
         self.board = Board()
@@ -23,37 +35,48 @@ class ScrabbleGame:
             self.next_turn()
 
     def next_turn(self):
-        if self.current_player is None:
-            self.current_player = self.players[0]
-        elif self.current_player == self.players[-1]:
-            self.current_player = self.players[0]
-        else:
-            index = self.players.index(self.current_player) + 1
-            self.current_player = self.players[index]
+        self.current_player = (self.current_player + 1) % len(self.players)
 
-#ARREGLAR
     def validate_word(self, word, location, orientation):
-        # '''
-        # 1- Validar que usuario tiene esas letras
-        # 2- Validar que la palabra entra en el tablero
-            # esta unida a otra palabra
-            # es inicial y pasa por el inicio
-        # '''
-        # self.board.validate_word_inside_board(word, location, orientation)
-        try:
-            player_tiles = self.current_player.get_tiles()
-            for letter in word:
-                if letter not in player_tiles:
-                    raise ValueError('El jugador no tiene las letras necesarias para formar la palabra.')
-        except ValueError as e:
-            print(e)
-            return False
-        try:
-            self.board.validate_word_inside_board(word, location, orientation)
-        except ValueError as e:
-            print(e)
-            return False
-        return True
+        if not Board.dict_validate_word(word):
+            raise InvalidWordException("Su palabra no existe en el diccionario.")
+        if not self.board.validate_word_inside_board(word, location, orientation):
+            raise InvalidPlaceWordException("Su palabra excede el tablero.")
+        if not self.board.validate_word_place_board(word, location, orientation):
+            raise InvalidPlaceWordException("Su palabra esta mal puesta en el tablero.")
+
+#     def next_turn(self):
+#         if self.current_player is None:
+#             self.current_player = self.players[0]
+#         elif self.current_player == self.players[-1]:
+#             self.current_player = self.players[0]
+#         else:
+#             index = self.players.index(self.current_player) + 1
+#             self.current_player = self.players[index]
+
+# #ARREGLAR
+#     def validate_word(self, word, location, orientation):
+#         # '''
+#         # 1- Validar que usuario tiene esas letras
+#         # 2- Validar que la palabra entra en el tablero
+#             # esta unida a otra palabra
+#             # es inicial y pasa por el inicio
+#         # '''
+#         # self.board.validate_word_inside_board(word, location, orientation)
+#         try:
+#             player_tiles = self.current_player.get_tiles()
+#             for letter in word:
+#                 if letter not in player_tiles:
+#                     raise ValueError('El jugador no tiene las letras necesarias para formar la palabra.')
+#         except ValueError as e:
+#             print(e)
+#             return False
+#         try:
+#             self.board.validate_word_inside_board(word, location, orientation)
+#         except ValueError as e:
+#             print(e)
+#             return False
+#         return True
 
     def get_words(self, word, location, orientation):
         # '''

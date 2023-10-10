@@ -6,6 +6,7 @@ class Player:
         self.tiles = bag_tiles.take(7)
         self.bag_tiles = bag_tiles
         self.id = id
+        self.score = 0
 
     def fill(self):
         self.tiles += self.bag_tiles.take(7 - len(self.tiles))

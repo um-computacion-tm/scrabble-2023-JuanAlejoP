@@ -16,11 +16,11 @@ class ScrabbleGame:
         self.current_player = None
 
     def play(self, word, location, orientation):
-        self.validate_word(word, location, orientation)
-        words = self.board.put_words(word, location, orientation)
-        total = calculate_word_value(words)
-        self.players[self.current_player].score += total
-        self.next_turn()
+        if self.validate_word(word, location, orientation):
+            words = self.board.put_words(word, location, orientation)
+            total = self.board.calculate_word_value(words)
+            self.current_player.score += total
+            self.next_turn()
 
     def next_turn(self):
         if self.current_player is None:

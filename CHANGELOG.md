@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.21.0] - 2023-10-10
+
+### Added
+
+#### ScrabbleGame Class:
+
+- Add custom exceptions for word and word placement validation:
+  - `InvalidWordException` for invalid words not found in the dictionary.
+  - `InvalidPlaceWordException` for invalid word placement on the board.
+  - `InvalidWordPlacementException` for incorrectly placed words on the board.
+
+#### Player Class:
+
+- Add a `score` attribute to the `Player` class.
+
+#### Board Class:
+
+- Add a placeholder method `dict_validate_word` to simulate word validation against a dictionary.
+
+### Changed
+
+- Updated the `play` method in the `ScrabbleGame` class to raise custom exceptions when word or placement is invalid, providing informative error messages.
+
+- Updated the `next_turn` method in the `ScrabbleGame` class to correctly cycle through players.
+
+- Made minor internal adjustments to support the new features and custom exceptions.
+
 ## [0.20.0] - 2023-10-09
 
 ### Added

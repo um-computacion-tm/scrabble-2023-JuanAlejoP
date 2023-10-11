@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.22.0] - 2023-10-11
+
+### Added
+
+#### ScrabbleGame Class:
+
+- Add the `show_board` method to the `ScrabbleGame` class:
+  - This method prints the current state of the game board, displaying the grid and squares.
+
+### Changed
+
+- Made minor internal adjustments to support the new `show_board` method.
+
 ## [0.21.0] - 2023-10-10
 
 ### Added

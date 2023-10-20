@@ -18,6 +18,10 @@ class InvalidWordPlacementException(Exception):
     def __init__(self, message):
         super().__init__(message)
 
+class InvalidTurnException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class ScrabbleGame:
     def __init__(self, players_count: int):
         self.board = Board()
@@ -35,7 +39,17 @@ class ScrabbleGame:
             self.next_turn()
 
     def next_turn(self):
-        self.current_player = (self.current_player + 1) % len(self.players)
+        if self.current_player is None:
+            self.current_player = self.players[0]
+        elif self.current_player == self.players[-1]:
+            raise InvalidTurnException("Error al cambiar de turno: el jugador actual es el último de la lista.")
+        else:
+            index = self.players.index(self.current_player) + 1
+            self.current_player = self.players[index]
+
+
+    # def next_turn(self):
+    #     self.current_player = (self.current_player + 1) % len(self.players)
 
     def validate_word(self, word, location, orientation):
         if not Board.dict_validate_word(word):

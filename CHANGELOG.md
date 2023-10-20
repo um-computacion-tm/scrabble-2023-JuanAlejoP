@@ -7,6 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.23.0] - 2023-09-14
+
+### Added
+
+#### ScrabbleGame Class:
+
+- Add the `InvalidTurnException` custom exception:
+  - This exception is raised in the `next_turn` method when attempting to switch to the next player's turn, but it doesn't succeed.
+
+### Changed
+
+- Updat the `next_turn` method in the `ScrabbleGame` class to raise the `InvalidTurnException` when necessary, providing an informative error message.
+
+- Made minor internal adjustments to support the new features, exceptions, and methods.
+
 ## [0.22.0] - 2023-10-11
 
 ### Added

@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.25.0] - 2023-10-22
+
+### Added
+
+- Add the `InsufficientLettersError` custom exception:
+  - This exception is declared but not fully implemented yet. It will be used for cases where a player has insufficient letters for a specific action.
+
+### Changed
+
+#### Player Class:
+
+- Modify the `has_letters` method in the `Player` class:
+  - Reimplemented the `has_letters` method to use a more efficient approach.
+  - It now counts the player's letters and checks if the required letters are available.
+  - This change improves the method's performance and readability.
+
+### Removed
+
+- Remove the previous implementation of the `has_letters` method which was marked for improvement.
+
 ## [0.24.0] - 2023-10-21
 
 ### Changed

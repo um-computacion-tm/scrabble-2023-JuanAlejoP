@@ -16,7 +16,7 @@ class BagTiles:
             Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1), Tile('A', 1),
             Tile('B', 3), Tile('B', 3),
             Tile('C', 3), Tile('C', 3), Tile('C', 3), Tile('C', 3),
-            Tile('Ch', 5),
+            Tile('CH', 5),
             Tile('D', 2), Tile('D', 2), Tile('D', 2), Tile('D', 2), Tile('D', 2),
             Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1), Tile('E', 1),
             Tile('F', 4),
@@ -25,7 +25,7 @@ class BagTiles:
             Tile('I', 1), Tile('I', 1), Tile('I', 1), Tile('I', 1), Tile('I', 1), Tile('I', 1),
             Tile('J', 8),
             Tile('L', 1), Tile('L', 1), Tile('L', 1), Tile('L', 1),
-            Tile('Ll', 8),
+            Tile('LL', 8),
             Tile('M', 3), Tile('M', 3),
             Tile('N', 1), Tile('N', 1), Tile('N', 1), Tile('N', 1), Tile('N', 1),
             Tile('Ñ', 8),
@@ -45,12 +45,16 @@ class BagTiles:
         ]
         random.shuffle(self.tiles)
 
-    def take(self, count):
+    def take(self, count, wildcard_value=None):
         tiles = []
         for _ in range(count):
             if not self.tiles:
                 raise UnderZeroTilesException('La bolsa de fichas no puede tener menos de 0 fichas.')
-            tiles.append(self.tiles.pop())
+            tile = self.tiles.pop()
+            if tile.letter == '*' and wildcard_value is not None:
+                tile.set_wildcard_value(wildcard_value)
+            
+            tiles.append(tile)
         return tiles
 
     def put(self, tiles):

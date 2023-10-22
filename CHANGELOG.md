@@ -7,7 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [0.23.0] - 2023-09-14
+## [0.24.0] - 2023-10-21
+
+### Changed
+
+#### BagTiles Class:
+
+- Modify the tile representation for "CH" and "LL" to "CH" and "LL" respectively, ensuring consistent formatting.
+
+- Update the `take` method to handle wildcards:
+  - If a wildcard is drawn from the bag and `wildcard_value` is provided, it sets the wildcard's value accordingly.
+
+#### Tile Class:
+
+- Update the `Tile` class to include a `wildcard_value` attribute, which is set to `None` by default.
+
+- Add the `set_wildcard_value` method to set the `wildcard_value` for a tile if it's a wildcard.
+
+## [0.23.0] - 2023-10-20
 
 ### Added
 

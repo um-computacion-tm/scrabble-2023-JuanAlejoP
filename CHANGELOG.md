@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.26.0] - 2023-10-23
+
+### Added
+
+- Add the `InsufficientLettersError` custom exception in the `Player` class:
+  - The `has_letters` method now raises this exception when a player has insufficient letters to make a play.
+
+### Changed
+
+#### Player Class:
+
+- Modify the `has_letters` method to raise `InsufficientLettersError` when the player lacks the required letters to make a play.
+
+#### ScrabbleGame Class (scrabble.py):
+
+- Update the `validate_word` method in the `ScrabbleGame` class:
+  - Add a new check to ensure that the player has the necessary letters to form the word.
+  - Add a check to verify that the word passes through the initial location on the board.
+  - These additional checks enhance the validation process for word placement.
+
 ## [0.25.0] - 2023-10-22
 
 ### Added

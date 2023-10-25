@@ -7,6 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.28.0] - 2023-10-25
+
+### Added
+
+#### New Module `dictionary.py`:
+
+- Create a new module `dictionary.py` to handle word validation against a dictionary.
+- Implement a connection to the dictionary using `pyrae` (PyPI package) and set log level to 'CRITICAL'.
+- Add a custom exception class `DictionaryConnectionError` for handling dictionary connection errors.
+- Implement the `validate_dictionary` function to check if a word exists in the dictionary, raising a `DictionaryConnectionError` if the word is not found.
+
+### Removed
+
+#### Board Class:
+
+- Remove the placeholder method `dict_validate_word`, as word validation is now handled by the `dictionary.py` module.
+
 ## [0.27.0] - 2023-10-24
 
 ### Changed
@@ -19,6 +36,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 #### Board Class:
 
 - Implement a placeholder method `dict_validate_word` to validate the existence of a word within a dictionary. The actual validation logic or API integration is pending.
+
+#### Removed
+
+- Remove `InsufficientLettersError` custom exception:
+  - It will later be re-implemented in a better way.
 
 ## [0.26.0] - 2023-10-23
 
@@ -33,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Modify the `has_letters` method to raise `InsufficientLettersError` when the player lacks the required letters to make a play.
 
-#### ScrabbleGame Class (scrabble.py):
+#### ScrabbleGame Class:
 
 - Update the `validate_word` method in the `ScrabbleGame` class:
   - Add a new check to ensure that the player has the necessary letters to form the word.

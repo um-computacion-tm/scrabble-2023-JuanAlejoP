@@ -16,11 +16,6 @@ class Board:
         if multiplier_word:
             value = value * multiplier_word
         return value
-
-    def dict_validate_word(self):
-        # Implementar lógica para validar existencia de la palabra dentro del diccionario.
-        # Implementar API
-        return True
     
     def validate_word_place_board(self, word, location, orientation):
         #REVISAR

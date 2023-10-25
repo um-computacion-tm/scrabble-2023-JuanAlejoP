@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.27.0] - 2023-10-24
+
+### Changed
+
+#### Player Class:
+
+- Modify the `has_letters` method to raise a `KeyError` when a player lacks the required letters to form a word. This change allows for a more specific error message that indicates which letter is missing.
+- Renamed the `id` attribute to `player_id` for clarity.
+
+#### Board Class:
+
+- Implement a placeholder method `dict_validate_word` to validate the existence of a word within a dictionary. The actual validation logic or API integration is pending.
+
 ## [0.26.0] - 2023-10-23
 
 ### Added

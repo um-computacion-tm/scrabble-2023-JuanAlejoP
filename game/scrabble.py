@@ -52,22 +52,7 @@ class ScrabbleGame:
     #     self.current_player = (self.current_player + 1) % len(self.players)
 
     def validate_word(self, word, location, orientation):
-    if not Board.dict_validate_word(word):
-        raise InvalidWordException("Su palabra no existe en el diccionario.")
-    if not self.board.validate_word_inside_board(word, location, orientation):
-        raise InvalidPlaceWordException("Su palabra excede el tablero.")
-    if not self.board.validate_word_place_board(word, location, orientation):
-        raise InvalidPlaceWordException("Su palabra esta mal puesta en el tablero.")
-    
-    player_tiles = self.current_player.get_tiles()
-    for letter in word:
-        if letter not in player_tiles:
-            raise InvalidWordException("El jugador no tiene las letras necesarias para formar la palabra.")
-    
-    if not self.board.is_start_word(word, location, orientation):
-        raise InvalidWordPlacementException("La palabra no pasa por la ubicación inicial del tablero.")
-    
-    return True
+        ...
 
 
     # version anterior

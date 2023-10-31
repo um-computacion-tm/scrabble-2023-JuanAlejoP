@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.29.0] - 2023-10-31
+
+### Added
+
+#### Square Class):
+
+- Add a `__str__` method to improve the string representation of a `Square` object.
+  - If the square has a letter, it will be displayed as `[<letter>]`.
+  - If the square is a word multiplier, it will be displayed as `[<multiplier>W]`.
+  - If the square is a letter multiplier, it will be displayed as `[<multiplier>L]`.
+  - Empty squares are represented as `『 』`.
+
+#### New Temporary Module `experimento.py`:
+
+- Create a temporary module called `experimento.py` for testing and experimentation purposes with the game board.
+- Add the `show_board` function to display the game board for testing.
+- In the `main` function, a `Board` instance is created and the `show_board` function is called to display the board.
+
 ## [0.28.0] - 2023-10-25
 
 ### Added

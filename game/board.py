@@ -18,7 +18,6 @@ class Board:
         return value
     
     def validate_word_place_board(self, word, location, orientation):
-        #REVISAR
         if not self.validate_word_inside_board(word, location, orientation):
             return False
         

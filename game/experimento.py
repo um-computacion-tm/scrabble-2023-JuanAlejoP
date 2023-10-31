@@ -2,11 +2,11 @@ from game.board import Board
 
 
 def show_board(board):
-    column_width = 3
+    column_width = 2
 
-    print('\n' + ' ' * column_width, end='  ')
+    print('\n' + '  ' * column_width, end='  ')
     for col_index in range(15):
-        print(str(col_index).rjust(column_width), end='   ')
+        print(str(col_index).rjust(column_width), end='     ')
     print()
 
     for row_index, row in enumerate(board.grid):
@@ -17,6 +17,7 @@ def show_board(board):
 
 def main():
     board = Board()
+    board.place_multipliers()
     show_board(board)
 
 if __name__ == "__main__":

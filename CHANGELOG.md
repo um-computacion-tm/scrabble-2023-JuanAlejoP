@@ -6,12 +6,29 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+## [0.30.0] - 2023-10-10
+
+### Added
+
+#### Board Class:
+
+- Add the `place_multipliers` method to populate the board with word and letter multipliers at their designated positions.
+
+#### Temporary Module `experimento.py`:
+
+- Update the `show_board` function to adjust column width and formatting.
+- Add a call to the `place_multipliers` method of the `Board` class to display the multipliers on the board.
+- The module is used for testing and will be removed once it is no longer needed.
+
+#### Square Class:
+
+- Modifiy the `__str__` method to use Japanese-style quotes (「」) to represent letters and multipliers.
 
 ## [0.29.0] - 2023-10-31
 
 ### Added
 
-#### Square Class):
+#### Square Class:
 
 - Add a `__str__` method to improve the string representation of a `Square` object.
   - If the square has a letter, it will be displayed as `[<letter>]`.
@@ -128,7 +145,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Updat the `next_turn` method in the `ScrabbleGame` class to raise the `InvalidTurnException` when necessary, providing an informative error message.
+- Update the `next_turn` method in the `ScrabbleGame` class to raise the `InvalidTurnException` when necessary, providing an informative error message.
 
 - Made minor internal adjustments to support the new features, exceptions, and methods.
 

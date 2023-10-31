@@ -10,13 +10,13 @@ class Square:
 
     def __str__(self):
         if self.letter:
-            return f'[{self.letter.letter}]'
+            return f'「{self.letter.letter}」'
         elif self.multiplier_type == 'word':
-            return f'[{self.multiplier}W]'
+            return f'「{self.multiplier}W」'
         elif self.multiplier_type == 'letter':
-            return f'[{self.multiplier}L]'
+            return f'「{self.multiplier}L」'
         else:
-            return '『 』'
+            return '「  」'
 
     def add_letter(self, letter: Tile):
         self.letter = letter

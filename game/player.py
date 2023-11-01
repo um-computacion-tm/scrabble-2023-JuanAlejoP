@@ -3,11 +3,12 @@ from game.bag_tiles import BagTiles
 
 class Player:
     def __init__(self, bag_tiles, player_id):
-        self.tiles = bag_tiles.take(7)
-        self.bag_tiles = bag_tiles
+        self.player_name = None
         self.player_id = player_id
         self.score = 0
-
+        self.tiles = bag_tiles.take(7)
+        self.bag_tiles = bag_tiles
+        
     def fill(self):
         self.tiles += self.bag_tiles.take(7 - len(self.tiles))
 

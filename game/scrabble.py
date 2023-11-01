@@ -24,13 +24,13 @@ class ScrabbleGame:
             self.players.append(Player(player_id=index, bag_tiles=self.bag_tiles))
         self.current_player = None
 
-    def show_board(board):
+    def show_board(self):
         column_width = 2
         print('\n' + '  ' * column_width, end='  ')
         for col_index in range(15):
             print(str(col_index).rjust(column_width), end='     ')
         print()
-        for row_index, row in enumerate(board.grid):
+        for row_index, row in enumerate(self.board.grid):
             print(str(row_index).rjust(column_width) + '|', end=' ')
             for square in row:
                 print(str(square).rjust(column_width), end=' ')

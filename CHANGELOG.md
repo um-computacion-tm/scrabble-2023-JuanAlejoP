@@ -7,6 +7,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.34.0] - 2023-10-31
+
+### Changes
+
+#### Main Script:
+
+- Significant changes in the implementation:
+    - Now, at the start of the game, it asks for the number of players and their names.
+    - Implement a main loop that allows players to take turns and displays relevant information like tiles and scores.
+    - Add a menu with options to place a word, exchange tiles, or end the game.
+
+### Fixes
+
+#### Player Class:
+
+- Fix attribute names in the player's constructor `__init__`.
+
+#### ScrabbleGame Class:
+
+- Fix an error in the `show_board` method.
+
 ## [0.33.0] - 2023-10-31
 
 ### Added

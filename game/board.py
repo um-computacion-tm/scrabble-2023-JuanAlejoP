@@ -69,20 +69,26 @@ class Board:
 
     def place_word(self, word, location, orientation):
         x, y = location
+        player_word = []
         if orientation == 'H':
             for letter in word:
-                self.grid[x][y].add_letter(letter)
+                square = self.grid[x][y]
+                square.add_letter(letter)
+                player_word.append(square)
                 y += 1
         else:
             for letter in word:
-                self.grid[x][y].add_letter(letter)
+                square = self.grid[x][y]
+                square.add_letter(letter)
+                player_word.append(square)
                 x += 1
+        return player_word
 
     @staticmethod
-    def calculate_word_value(word: list[Square]) -> int:
+    def calculate_word_value(player_word: list[Square]) -> int:
         value: int = 0
         multiplier_word = None
-        for square in word:
+        for square in player_word:
             value = value + square.calculate_value()
             if square.multiplier_type == "word" and square.active:
                 multiplier_word = square.multiplier

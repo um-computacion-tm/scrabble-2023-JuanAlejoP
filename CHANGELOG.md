@@ -7,13 +7,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.32.0] - 2023-10-31
+
+### Changed
+
+#### Board Class:
+
+- Modify the `place_word` method. It now generates a list `player_word` that is used for the subsequent calculation of word value. The method has been enhanced to populate the `player_word` list while placing the word on the board.
+
 ## [0.31.0] - 2023-10-31
 
 ### Added
 
-#### ScrabbleGame Class (scrabble.py):
+#### ScrabbleGame Class:
 
-- Add the `place_words` method to place words on the board, populating it with valid words.
+- Add the `place_word` method to place words on the board, populating it with valid words.
 - Add a new implementation for the `validate_word` method. The logic is yet to be completed.
 
 ### Changed

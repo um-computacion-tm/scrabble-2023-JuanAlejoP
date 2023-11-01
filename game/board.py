@@ -67,6 +67,17 @@ class Board:
         self.grid[14][11] = Square(2, 'letter')
         self.grid[14][14] = Square(3, 'word')
 
+    def place_word(self, word, location, orientation):
+        x, y = location
+        if orientation == 'H':
+            for letter in word:
+                self.grid[x][y].add_letter(letter)
+                y += 1
+        else:
+            for letter in word:
+                self.grid[x][y].add_letter(letter)
+                x += 1
+
     @staticmethod
     def calculate_word_value(word: list[Square]) -> int:
         value: int = 0
@@ -79,23 +90,13 @@ class Board:
             value = value * multiplier_word
         return value
     
-    def validate_word_place_board(self, word, location, orientation):
-        if not self.validate_word_inside_board(word, location, orientation):
-            return False
-        
-        return True
-
     def validate_word_inside_board(self, word, location, orientation):
-        position_x = location[0]
-        position_y = location[1]
-        len_word = len(word)
-        if orientation == "H":
-            if position_x + len_word > 15:
-                return False
-            else:
-                return True
-        else:
-            pass
+        #Falta implementar
+        ...
+
+    def validate_word_place_board(self, word, location, orientation):
+        #Falta implementar
+        ...
 
     def is_empty(self):
             for row in self.grid:

@@ -6,6 +6,34 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+
+## [0.31.0] - 2023-10-31
+
+### Added
+
+#### ScrabbleGame Class (scrabble.py):
+
+- Add the `place_words` method to place words on the board, populating it with valid words.
+- Add a new implementation for the `validate_word` method. The logic is yet to be completed.
+
+### Changed
+
+#### ScrabbleGame Class:
+
+- Rename the `id` attribute to `player_id`.
+- Move the `show_board` method from the `experimento` module to the `ScrabbleGame` class.
+- Modify the `next_turn` method to improve its functionality.
+- Improve the `play` method to work more effectively.
+
+#### Board Class:
+
+- Remove the previous implementation of word validation methods. These are now placeholders for future implementation.
+
+### Removed
+
+- Remove the `show_board` method from `experimento.py `as it has been moved to the `ScrabbleGame` class.
+- Remove unused imports and exceptions from `ScrabbleGame`.
+
 ## [0.30.0] - 2023-10-31
 
 ### Added

@@ -53,7 +53,6 @@ class BagTiles:
             tile = self.tiles.pop()
             if tile.letter == '*' and wildcard_value is not None:
                 tile.set_wildcard_value(wildcard_value)
-            
             tiles.append(tile)
         return tiles
 

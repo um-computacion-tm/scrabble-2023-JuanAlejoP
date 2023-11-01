@@ -7,6 +7,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.33.0] - 2023-10-31
+
+### Added
+
+#### Board Class:
+
+- Implement several new validation methods in the `Board` class:
+    - Add `validate_first_turn`: Validates that the first word placed on the board starts from the center.
+    - Add `validate_word_crossing`: Verifies that the word doesn't interfere with existing words on the board.
+    - Add `validate_next_to_word`: Ensures that the word is placed adjacent to an existing word on the board.
+
+### Changed
+
+#### Board Class:
+
+- Implement several new validation methods in the `Board` class:
+    - Modify `validate_word_inside_board`: Checks if the word fits within the board boundaries based on its location and orientation.
+    - Modify `validate_word_place_board`: Combines various validation checks to ensure the word placement is valid.
+
 ## [0.32.0] - 2023-10-31
 
 ### Changed

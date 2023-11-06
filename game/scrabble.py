@@ -16,13 +16,16 @@ class InvalidWordPlacementException(Exception):
 
 
 class ScrabbleGame:
-    def __init__(self, players_count: int):
+    def __init__(self, players_count: int, player_names: list):
         self.board = Board()
         self.bag_tiles = BagTiles()
         self.players:list[Player] = []
-        for index in range(players_count):
-            self.players.append(Player(player_id=index, bag_tiles=self.bag_tiles))
-        self.current_player = None
+        for index in range(1, players_count + 1):
+            player = Player(player_id=index, bag_tiles=self.bag_tiles)
+            player.player_name = player_names[index - 1]
+            self.players.append(player)
+        self.current_player_index = 0 
+        self.current_player = self.players[0]
 
     def show_board(self):
         column_width = 2
@@ -37,10 +40,8 @@ class ScrabbleGame:
             print()
 
     def next_turn(self):
-        if self.current_player is None:
-            self.current_player = self.players[0]
-        else:
-            self.current_player = (self.current_player + 1) % len(self.players)
+        self.current_player_index = (self.current_player_index + 1) % len(self.players)
+        self.current_player = self.players[self.current_player_index]
 
     def validate_word(self, word, location, orientation):
         if not Board.dict_validate_word(word):

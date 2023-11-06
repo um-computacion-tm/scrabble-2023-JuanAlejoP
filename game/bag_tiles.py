@@ -43,7 +43,7 @@ class BagTiles:
             Tile('Z', 10),
             Tile('*', 0), Tile('*', 0),
         ]
-        random.shuffle(self.tiles)
+        self.mix()
 
     def take(self, count, wildcard_value=None):
         tiles = []
@@ -60,3 +60,7 @@ class BagTiles:
         if len(self.tiles) + len(tiles) > 100:
             raise Over100TilesException('La bolsa de fichas no puede tener más de 100 fichas.')
         self.tiles.extend(tiles)
+        self.mix()
+
+    def mix(self):
+        random.shuffle(self.tiles)

@@ -4,6 +4,7 @@ from game.square import Square
 class Board:
     def __init__(self):
         self.grid = [[Square(1, '', '') for _ in range(15)] for _ in range(15)]
+        self.place_multipliers()
 
     def place_multipliers(self):
         self.grid[0][0] = Square(3, 'word')

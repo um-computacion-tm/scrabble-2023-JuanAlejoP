@@ -7,6 +7,44 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.35.0] - 2023-11-06
+
+### Added
+
+#### Tile Class:
+
+- Add the `__str__` method to display the tile's letter and value together.
+
+#### Board Class:
+
+- Add `place_multipliers()` call to ensure the board is initialized with multipliers.
+
+#### Player Class:
+
+- Add a `switch` method to allow players to exchange tiles with the bag.
+
+### Changes
+
+#### ScrabbleGame Class:
+
+- Modify the `__init__` method to accept both the number of players and their names. Player IDs are now correctly assigned.
+- Modify `next_turn` method to switch to the next player's turn properly.
+
+#### BagTiles Class:
+
+- Implement a `mix` method to shuffle the tiles.
+
+#### Main Script:
+
+- Now, it displays players' tile racks as formatted text.
+- Implement option for exchanging tiles and passing the turn.
+
+### Removed
+
+#### Player Class:
+
+- Removed unused import statements.
+
 ## [0.34.0] - 2023-10-31
 
 ### Changes

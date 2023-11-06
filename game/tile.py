@@ -6,3 +6,6 @@ class Tile:
 
     def set_wildcard_value(self, letter):
         self.wildcard_value = letter
+
+    def __str__(self):
+        return f'{self.letter}({self.value})'

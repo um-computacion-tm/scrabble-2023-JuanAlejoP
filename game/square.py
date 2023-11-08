@@ -10,7 +10,7 @@ class Square:
 
     def __str__(self):
         if self.letter:
-            return f'「{self.letter.letter}」'
+            return f'「 {self.letter.letter}」'
         elif self.multiplier_type == 'word':
             return f'「{self.multiplier}W」'
         elif self.multiplier_type == 'letter':
@@ -18,7 +18,7 @@ class Square:
         else:
             return '「  」'
 
-    def add_letter(self, letter: Tile):
+    def add_letter(self, letter):
         self.letter = letter
 
     def calculate_value(self):

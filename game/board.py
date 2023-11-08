@@ -1,6 +1,10 @@
 from game.square import Square
 
 
+class BoardException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class Board:
     def __init__(self):
         self.grid = [[Square(1, '', '') for _ in range(15)] for _ in range(15)]
@@ -75,93 +79,92 @@ class Board:
                     return False
         return True
         
-    def place_word(self, word, location, orientation):
+    def place_word(self, played_word, location, orientation):
         x, y = location
-        player_word = []
+        self.placed_word = []
         if orientation == 'H':
-            for letter in word:
+            for letter in played_word:
                 square = self.grid[x][y]
                 square.add_letter(letter)
-                player_word.append(square)
+                self.placed_word.append(square)
                 y += 1
         else:
-            for letter in word:
+            for letter in played_word:
                 square = self.grid[x][y]
                 square.add_letter(letter)
-                player_word.append(square)
+                self.placed_word.append(square)
                 x += 1
-        return player_word
+        return self.placed_word
 
     @staticmethod
-    def calculate_word_value(player_word: list[Square]) -> int:
+    def calculate_word_value(placed_word: list[Square]) -> int:
         value: int = 0
-        multiplier_word = None
-        for square in player_word:
+        word_multiplier = None
+        for square in placed_word:
             value = value + square.calculate_value()
             if square.multiplier_type == 'word' and square.active:
-                multiplier_word = square.multiplier
-        if multiplier_word:
-            value = value * multiplier_word
+                word_multiplier = square.multiplier
+        if word_multiplier:
+            value = value * word_multiplier
         return value
     
     def validate_first_turn(self, location):
         return location == (7, 7)
 
     def validate_word_inside_board(self, word, location, orientation):
-        position_x, position_y = location
-        len_word = len(word)
+        x, y = location
+        word_length = len(word)
         if orientation == 'H':
-            if position_x + len_word > 15:
-                return False
-            else:
-                return True
+            return x + word_length <= 15
         elif orientation == 'V':
-            if position_y + len_word > 15:
-                return False
-            else:
-                return True
-        return True
+            return y + word_length <= 15
+
     
     def validate_word_crossing(self, word, location, orientation):
-        position_x, position_y = location
+        x, y = location
         if orientation == 'H':
             for i in range(len(word)):
                 if (
-                    self.grid[position_x + i][position_y].letter
-                    and self.grid[position_x + i][position_y].letter != word[i]
+                    self.grid[x + i][y].letter
+                    and self.grid[x + i][y].letter != word[i]
                 ):
                     return False
         else:
             for i in range(len(word)):
                 if (
-                    self.grid[position_x][position_y + i].letter
-                    and self.grid[position_x][position_y + i].letter != word[i]
+                    self.grid[x][y + i].letter
+                    and self.grid[x][y + i].letter != word[i]
                 ):
                     return False
         return True
 
     def validate_next_to_word(self, word, location, orientation):
-        position_x, position_y = location
+        x, y = location
         if orientation == 'H':
             for i in range(len(word)):
-                if self.grid[position_x + i][position_y].letter is None:
+                if self.grid[x + i][y].letter is None:
                     return False
         else:
             for i in range(len(word)):
-                if self.grid[position_x][position_y + i].letter is None:
+                if self.grid[x][y + i].letter is None:
                     return False
         return True
 
     def validate_word_place_board(self, word, location, orientation):
-        position_x, position_y = location
-        if not (0 <= position_x <= 14) or not (0 <= position_y <= 14):
-            return False
-        if not self.validate_word_inside_board(location):
-            return False
+        x, y = location
+        if not (0 <= x <= 14) or not (0 <= y <= 14):
+            raise BoardException('COORDENADAS INCORRECTAS. DEBEN TOMAR VALORES ENTRE 0 y 14.')
+
+        if not self.validate_word_inside_board(word, location, orientation):
+            raise BoardException('LA PALABRA SE SALE DEL TABLERO.')
+
         if self.is_empty() and not self.validate_first_turn(location):
-            return False
+            raise BoardException('LA PRIMER PALABRA DEBE COLOCARSE EN EL CENTRO DEL TABLERO.')
+        
         if not self.validate_next_to_word(word, location, orientation):
-            return False
+            raise BoardException('LA PALABRA DEBE COLOCARSE ADYACENTE A OTRA PALABRA.')
+            
+
         if not self.validate_word_crossing(word, location, orientation):
-            return False
+            raise BoardException('LA PALABRA ESTÁ CRUZANDO MAL OTRA PALABRA.')
         return True

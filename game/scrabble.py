@@ -1,22 +1,16 @@
-from game.board import Board
+from game.board import Board, BoardException
+from game.dictionary import Dictionary
 from game.bag_tiles import BagTiles
-from game.player import Player
+from game.player import Player, PlayerException
 
-class InvalidWordException(Exception):
+
+class ScrabbleException(Exception):
     def __init__(self, message):
         super().__init__(message)
-
-class InvalidPlaceWordException(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
-class InvalidWordPlacementException(Exception):
-    def __init__(self, message):
-        super().__init__(message)
-
 
 class ScrabbleGame:
     def __init__(self, players_count: int, player_names: list):
+        self.dictionary = Dictionary()
         self.board = Board()
         self.bag_tiles = BagTiles()
         self.players:list[Player] = []
@@ -44,16 +38,20 @@ class ScrabbleGame:
         self.current_player = self.players[self.current_player_index]
 
     def validate_word(self, word, location, orientation):
-        if not Board.dict_validate_word(word):
-            raise InvalidWordException("Su palabra no existe en el diccionario.")
-        if not self.board.validate_word_inside_board(word, location, orientation):
-            raise InvalidPlaceWordException("Su palabra excede el tablero.")
+        if not self.dictionary.validate_dictionary(word):
+            raise ScrabbleException('LA PALABRA NO EXISTE EN EL DICCIONARIO.')
         if not self.board.validate_word_place_board(word, location, orientation):
-            raise InvalidPlaceWordException("Su palabra est mal puesta en el tablero.")
+            return False
+        return True
 
     def play(self, word, location, orientation):
-        if self.validate_word(word, location, orientation):
-            player_word = self.board.place_word(word, location, orientation)
-            total = self.board.calculate_word_value(player_word)
-            self.current_player.score += total
-            self.next_turn()
+        try:
+            if self.validate_word(word, location, orientation):
+                played_word = self.current_player.has_letters(word)
+                placed_word = self.board.place_word(played_word, location, orientation)
+                total_score = self.board.calculate_word_value(placed_word)
+                self.current_player.score += total_score
+                self.current_player.fill()
+                self.next_turn()
+        except (ScrabbleException, BoardException, PlayerException) as e:
+            print(f"\nERROR: {e}")

@@ -1,6 +1,9 @@
-import unicodedata
+import unicodedata, os
 from game.scrabble import ScrabbleGame
 from game.square import Square
+
+def clear_terminal():
+    os.system('clear')
 
 def main():
     print('\n¡Bienvenido a PyScrabble!')
@@ -41,6 +44,10 @@ def main():
                     if 1 <= player_to_change <= player_quantity:
                         new_name = input(f'\nIngrese el nuevo nombre del Jugador {player_to_change}: ')
                         player_names[player_to_change - 1] = new_name
+                        print(f'El Jugador {player_to_change} ahora es {new_name}.')
+                        print('\nLos jugadores son:')
+                        for i, name in enumerate(player_names):
+                            print(f'Jugador {i + 1}: {name}')
                         break
 
                     else:
@@ -50,6 +57,7 @@ def main():
                     print('Ingrese un número válido.')
 
     scrabble_game = ScrabbleGame(players_count=player_quantity, player_names=player_names)
+    # clear_terminal()
 
     while True:
         current_player = scrabble_game.current_player
@@ -57,24 +65,25 @@ def main():
         tiles_format = unicodedata.normalize("NFKD", tiles_format)
 
         print('\n-------------------------------------------------PyScrabble------------------------------------------------')
-        print(f"Turno del Jugador {current_player.player_id}: {current_player.player_name}")
-        print(f"Fichas: 「 {tiles_format} 」")
-        print(f"Puntaje: {current_player.score}") #『 』
         scrabble_game.show_board()
         print('-----------------------------------------------------------------------------------------------------------')
-        
+        print(f"\nTurno del Jugador {current_player.player_id}: {current_player.player_name}")
+        print(f"Fichas: 「 {tiles_format} 」")
+        print(f"Puntaje: {current_player.score}") #『 』
         print('\n¿Qué quieres hacer?')
         print('1. Colocar una palabra')
         print('2. Cambiar fichas')
         print('3. Pasar turno')
         print('4. Terminar el juego')
 
-        option = input('\nElige una opción (1/2/3): ').strip()
-            
+        option = input('\nElige una opción: ').strip()
         if option == '1':
-            
-            pass
-            scrabble_game.next_turn()
+            word = input('Palabra a colocar: ').upper()
+            x = int(input('Ingrese coordenada en x: '))
+            y = int(input('Ingrese coordenada en y: '))
+            location = x,y
+            orientation = input('Ingrese la orientación de la palabra: ')
+            scrabble_game.play(word, location, orientation)
 
         elif option == '2':
             scrabble_game.current_player.switch()
@@ -88,18 +97,7 @@ def main():
             scrabble_game.next_turn()
 
         elif option == '3':
-            print('¿Estás seguro de pasar tu turno?')
-            print('1. Sí')
-            print('2. No')
-            answer = input('Elige una opción: ').strip()
-            if answer == 1:
-                scrabble_game.next_turn()
-            
-            elif answer == 2:
-                pass            
-            
-            else:
-                ...
+            scrabble_game.next_turn()           
 
         elif option == '4':
             break

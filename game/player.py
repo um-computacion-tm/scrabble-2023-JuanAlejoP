@@ -1,3 +1,7 @@
+class PlayerException(Exception):
+    def __init__(self, message):
+        super().__init__(message)
+
 class Player:
     def __init__(self, bag_tiles, player_id):
         self.player_name = None
@@ -5,26 +9,32 @@ class Player:
         self.score = 0
         self.tiles = bag_tiles.take(7)
         self.bag_tiles = bag_tiles
+        self.matches = []
         
     def fill(self):
         self.tiles += self.bag_tiles.take(7 - len(self.tiles))
 
     def has_letters(self, word):
-        player_letters = {}
-        for tile in self.tiles:
-            letter = tile.letter
-            player_letters[letter] = player_letters.get(letter, 0) + 1
+        word_letters = list(word)
 
-        try:
-            for letter in word:
-                if player_letters[letter] > 0:
-                    player_letters[letter] -= 1
-                else:
-                    raise KeyError(f"Falta la letra '{letter}' para formar la palabra '{word}'.")
-        except KeyError as e:
-            raise KeyError(e)
-        
-        return True
+        for letter in word_letters:
+            tile_found = False
+            for tile in self.tiles:
+                if tile.letter == letter:
+                    self.matches.append(tile)
+                    tile_found = True
+                    break
+
+                if len(tile.letter) == 2 and tile.letter[0] == letter:
+                    self.matches.append(tile)
+                    tile_found = True
+                    break
+            if not tile_found:
+                raise PlayerException(f"FALTA LA LETRA '{letter}' PARA FORMAR LA PALABRA '{word}'.")
+        print(self.matches)
+        for tile in self.matches:
+            self.tiles.remove(tile)
+        return self.matches 
     
     def switch(self):
         player_tiles = self.tiles

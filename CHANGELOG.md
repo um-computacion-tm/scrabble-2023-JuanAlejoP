@@ -7,6 +7,73 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.36.0] - 2023-11-08
+
+### Added
+
+#### Board Class:
+
+- Add `BoardException` to handle exceptions in the Board class.
+
+#### Dictionary Class:
+
+- Create a `Dictionary` class.
+
+#### Main Script:
+
+- Add a `clear_terminal` function to clear the terminal (for UNIX-like systems).
+- Add the ability to change player names before starting the game.
+
+#### Player Module:
+
+- Create a `PlayerException` to handle exceptions in the Player class.
+
+#### Scrabble Module:
+
+- Add the `validate_word` method to check dictionary and board-related validation.
+- Add `ScrabbleException` to handle all exceptions.
+
+### Changed
+
+#### Board Class:
+
+- Modify validation methods for placing a word on the board.
+- Change the place_word method to validate the placement and store the placed word.
+- Modify the calculate_word_value method to calculate word scores correctly.
+
+#### Main Script:
+
+- Modify import statements.
+- Made various modifications in the game menu.
+
+#### Player Module:
+
+- Modify the __init__ constructor to accept player_id.
+- Modify the has_letters method to store matched tiles and raise exceptions.
+- Change the switch method to handle tile swapping.
+
+#### Scrabble Module:
+
+- Modify the constructor of the ScrabbleGame class.
+- Modify the show_board method.
+- Modify the play method to correctly validate, place, and score a word.
+
+#### Square Module:
+
+- Modify the __str__ method to display square contents.
+- Modify the add_letter method to place letters.
+- Modify the calculate_value method to consider square multipliers.
+
+### Removed
+
+#### Dictionary Class:
+
+- Remove an unused exception.
+
+#### Scrabble Module:
+
+- Remove previous exceptions.
+
 ## [0.35.0] - 2023-11-06
 
 ### Added
